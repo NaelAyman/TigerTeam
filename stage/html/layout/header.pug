@@ -1,0 +1,80 @@
+// Start Loader
+
+.overlay
+
+.loading
+  .loader
+      img(src="img/logo-footer.png")
+
+// End Loader
+
+// Start Header
+
+header
+  .top-header
+    .container
+      ul.content
+        li.date
+        li.lang 
+          i.fas.fa-globe
+          | English
+  .nav-menu
+    .container
+      .menu-content
+        .right-content
+          a.logo(href="index.html")
+              img(src="img/logo.png")
+          .nav-links
+            ul
+              li(class = pageTitle === "index" ? "active" : "") 
+                a(href="index.html") الرئيسية
+              li(class = pageTitle === "aboutUs" ? "active" : "")
+                a(href="") عن المكتبة
+              li(class = pageTitle === "types" ? "active" : "") 
+                .dropdown-click
+                  a.default(href="") فئات الكتب
+                  i.left-icon.fas.fa-chevron-down
+                  .dropdown-content
+                    ul
+                      li
+                        a(href="") الأخبار المحلية
+                      li
+                        a(href="") الأخبار العالمية
+              li(class = pageTitle === "news" ? "active" : "")
+                .dropdown-click
+                  a.default(href="") الأخبار
+                  i.left-icon.fas.fa-chevron-down
+                  .dropdown-content
+                    ul
+                      li
+                        a(href="") الأخبار المحلية
+                      li
+                        a(href="") الأخبار العالمية
+              li(class = pageTitle === "news" ? "active" : "")
+                a(href="") الفعاليات
+        .mob-collaps
+            span
+            span
+            span
+        .user-tools
+          ul
+            li: a.search(href="")
+              i.fas.fa-search
+            li: a.login.site-btn(href="") تسجيل دخول
+
+// End Header
+
+// Start Search Form
+
+.search-form
+  form(action="")
+    .form-group
+      select.Wide(name='Selectbox' aria-invalid='false')
+        option(value='First one') كل الفئات
+        option(value='Second One') كل الفئات
+        option(value='Third one') كل الفئات
+      input.form-control(type="text" placeholder="بحث ...")
+      button.site-btn
+        i.fas.fa-search
+
+// End Search Form

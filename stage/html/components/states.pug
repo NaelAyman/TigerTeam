@@ -1,0 +1,40 @@
+-
+  var states = [
+    {
+      className: 'comments',
+      image: 'slider1.jpg' , 
+      title: 'Comments',
+      count: '1000',
+      icon: 'fa-comments-o'
+    } , 
+    {
+      className: 'members',
+      image: 'slider2.jpg' , 
+      title: 'Memebers',
+      count: '5000',
+      icon: 'fa-users'
+    } , 
+    {
+      className: 'views',
+      image: 'slider2.jpg' , 
+      title: 'View',
+      count: '2000',
+      icon: 'fa-eye'
+    } , 
+    {
+      className: 'downloads',
+      image: 'slider2.jpg' , 
+      title: 'Downloads',
+      count: '3000',
+      icon: 'fa-download'
+    }
+  ]
+
+.container-fluid
+  .row
+    each state in states
+      .col-md-3
+        .state-box(class= state.className)
+          span.title #{state.title}
+          span.count #{state.count}
+          i.fa(class= state.icon)

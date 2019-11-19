@@ -1,0 +1,15 @@
+block pageTitle
+    -var pageTitle = 'index';
+<!DOCTYPE html>
+html(lang="en")
+    include layout/head
+    body
+        //- Start Page Container
+        .page-container
+            include layout/header
+            .main-content
+                //- include components/states
+            include layout/footer
+        //- End Page Container
+
+        include layout/footer-scripts

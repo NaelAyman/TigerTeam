@@ -1,0 +1,15 @@
+// Import Color
+@import 'sass/variables/colors';
+@import 'sass/variables/niceSelect';
+
+// Import Layout
+@import 'sass/layout/niceSelect';
+@import 'sass/layout/header';
+@import 'sass/layout/footer';
+@import 'sass/layout/global';
+
+// Import Pages
+@import 'sass/pages/index';
+
+// Import Media
+@import 'sass/layout/media';
