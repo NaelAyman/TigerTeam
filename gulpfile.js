@@ -1,16 +1,16 @@
 var gulp = require("gulp"),
-  pug = require("gulp-pug"),
-  sass = require("gulp-sass"),
-  concat = require("gulp-concat"),
-  autoprefixer = require("gulp-autoprefixer"),
-  minify = require("gulp-minify"),
-  livereload = require("gulp-livereload"),
-  wait = require("gulp-wait"),
-  sourcemaps = require("gulp-sourcemaps"),
-  image = require("gulp-image"),
-  imagemin = require("gulp-imagemin"),
-  plumber = require("gulp-plumber"),
-  browserSync = require("browser-sync");
+    pug = require("gulp-pug"),
+    sass = require("gulp-sass"),
+    concat = require("gulp-concat"),
+    autoprefixer = require("gulp-autoprefixer"),
+    minify = require("gulp-minify"),
+    // livereload = require("gulp-livereload"),
+    wait = require("gulp-wait"),
+    sourcemaps = require("gulp-sourcemaps"),
+    image = require("gulp-image"),
+    imagemin = require("gulp-imagemin"),
+    plumber = require("gulp-plumber"),
+    browserSync = require("browser-sync");
 
 var htmlPath = "stage/html/*.pug",
   cssPathes = [
@@ -18,7 +18,8 @@ var htmlPath = "stage/html/*.pug",
     "stage/css/libs/font-awesome-5all.css",
     "stage/css/libs/owl.carousel.css",
     "stage/css/**/*.scss",
-    "stage/css/**/*.css"
+    "stage/css/**/*.css",
+    "!"
   ],
   jsPath = "stage/js/*.js";
 
@@ -46,13 +47,12 @@ gulp.task("css", function() {
       .src(cssPathes)
       .pipe(wait(500))
       .pipe(plumber())
-      .pipe(sourcemaps.init())
+      .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
       .pipe(autoprefixer("last 5 version"))
       .pipe(concat("master.min.css"))
       .pipe(sourcemaps.write("."))
       .pipe(gulp.dest("dist/css"))
-      // .pipe(livereload());
       .pipe(
         browserSync.reload({
           stream: true
@@ -67,12 +67,9 @@ gulp.task("js", function() {
   return (
     gulp
       .src(jsPath)
-      .pipe(sourcemaps.init())
       .pipe(concat("scripts.js"))
       .pipe(minify())
-      .pipe(sourcemaps.write("."))
       .pipe(gulp.dest("dist/js"))
-      // .pipe(livereload());
       .pipe(
         browserSync.reload({
           stream: true
@@ -90,7 +87,6 @@ gulp.task("images", function() {
       .pipe(image())
       .pipe(imagemin())
       .pipe(gulp.dest("dist/img"))
-      // .pipe(livereload());
       .pipe(
         browserSync.reload({
           stream: true
@@ -114,8 +110,6 @@ function browser_sync() {
 // Watch Task
 
 gulp.task("default", function() {
-  // require("./server.js");
-  // livereload.listen();
   browser_sync();
   gulp.watch("stage/html/**/*.pug", gulp.series("html"));
   gulp.watch(cssPathes, gulp.series("css"));
